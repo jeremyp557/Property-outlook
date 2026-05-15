@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Periodic Table</title>
+  <!-- build: v37 -->
+
+  <!-- PWA -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Periodic Table" />
+  <meta name="theme-color" content="#1a3c6d" />
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAEq0lEQVR4nO3dv6okRRjG4aNrZGrmVXgBGskGYuItCGImJhoIggiCgSZiJoK3YLJssBjpBXgVZqZmoumw9Knqqq7qP/M+TzrUzNnl+033nGXne3gAAAAAAADu1StH/wBL3nz7k/+O/hkY768/fjzdvJ3iBzLwuY6O4rAXN/S87IgYdn9Bg0/NniHs9kIGn1Z7hDD9BQw+W8yOYOqTG35GmRXCqzOe9OHB8DPWrHkaXpXBZ7aRV4OhVwDDzx5GztmwAAw/exo1b0MCMPwcYcTcbQ7A8HOkrfM37bdAcAWbAvDuzxlsmcPuAAw/Z9I7j10BGH7OqGcuX5vxgzzm6TvvNZ958fvz4uOff/Zp83N+9/0P5df85Yvm53z64bfFxz/6+vXm5/z5q3+Kj3/w5b/Nz/nrN0+Kj7/18d/Nz/nnT28UH3/2bvnPseT939r/vno0XwF63/17hr92rmf4a+d6hr92rmf4a+d6hr92rmf4a+d6hn/Ludb53OW3QL3DXzrfO/yl873DXzrfO/yl873DXzrfO/yl871DPOr8Gk0BuPfnClrm1L8DEG11AN79uZK18+oKQDQBEG1VAG5/uKI1c+sKQDQBEE0ARKsG4P6fK6vNrysA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEC0XQKofcV5z/naV5zXLJ2vfcV5zdL52lec1yydr33Fec3S+dpXnNcsnd/6Fed7fEX6bleA3ghK53ojKJ3rjaB0rjeC0rneCErneiMonesd4r32A1Q3bvtP8VxdabO8zwBEEwDRBEA0S/KWXtOSvCZRS/J6WZLXzpK8+SzJu2FJXr+IJXlwbwRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEsyTvhiV5/SzJq7Akr50lefNZksfdsyQPHiEAotkRtvSadoQ1sSNsBTvC2tkRNp8dYTfsCOtnRxhckACIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBodoTdsCOsnx1hFXaEtbMjbD47wrh7doTBIwRANAEQzZK8pde0JK+JJXkrWJLXzpK8+SzJu2FJXj9L8uCCBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANGqAZS+UwXOrja/rgBEEwDRBEA0ARBtVQA+CHNFa+bWFYBoAuAurb1rWR2A2yDukSsA0ZoCcBXgClrm1JK8G5bk9YtZktd7FbAkr50lee1a57P7lsbyPM6m583Zh2CidQfgAzFn0juPm64AIuAMtsyhWyAubeub8OYAXAU4yojZG3IFEAF7GzVzw26BRMBeRs7a0M8AImC20TM2bWD9QxmjzXiDnfZbIFcDRpo1T9OH1JWALWa/ke72Li0EWu1xF7H7bYoQqNnz9vmw+3QhcOuoz4yn+KAqhlxH/7LkFAG8TBD36ehhBwAAAAAI9D8FrVc4Z9sG7wAAAABJRU5ErkJggg==" />
+  <script>
+    // Inject manifest dynamically so this file is fully self-contained
+    (function(){
+      const m = {"name": "Year 8 Interactive Periodic Table", "short_name": "Periodic Table", "description": "Interactive periodic table for Year 8 science.", "start_url": ".", "scope": ".", "display": "standalone", "orientation": "any", "background_color": "#f8f9fa", "theme_color": "#1a3c6d", "lang": "en", "icons": [{"src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAEq0lEQVR4nO3dv6okRRjG4aNrZGrmVXgBGskGYuItCGImJhoIggiCgSZiJoK3YLJssBjpBXgVZqZmoumw9Knqqq7qP/M+TzrUzNnl+033nGXne3gAAAAAAADu1StH/wBL3nz7k/+O/hkY768/fjzdvJ3iBzLwuY6O4rAXN/S87IgYdn9Bg0/NniHs9kIGn1Z7hDD9BQw+W8yOYOqTG35GmRXCqzOe9OHB8DPWrHkaXpXBZ7aRV4OhVwDDzx5GztmwAAw/exo1b0MCMPwcYcTcbQ7A8HOkrfM37bdAcAWbAvDuzxlsmcPuAAw/Z9I7j10BGH7OqGcuX5vxgzzm6TvvNZ958fvz4uOff/Zp83N+9/0P5df85Yvm53z64bfFxz/6+vXm5/z5q3+Kj3/w5b/Nz/nrN0+Kj7/18d/Nz/nnT28UH3/2bvnPseT939r/vno0XwF63/17hr92rmf4a+d6hr92rmf4a+d6hr92rmf4a+d6hn/Ludb53OW3QL3DXzrfO/yl873DXzrfO/yl873DXzrfO/yl871DPOr8Gk0BuPfnClrm1L8DEG11AN79uZK18+oKQDQBEG1VAG5/uKI1c+sKQDQBEE0ARKsG4P6fK6vNrysA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEC0XQKofcV5z/naV5zXLJ2vfcV5zdL52lec1yydr33Fec3S+dpXnNcsnd/6Fed7fEX6bleA3ghK53ojKJ3rjaB0rjeC0rneCErneiMonesd4r32A1Q3bvtP8VxdabO8zwBEEwDRBEA0S/KWXtOSvCZRS/J6WZLXzpK8+SzJu2FJXr+IJXlwbwRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEsyTvhiV5/SzJq7Akr50lefNZksfdsyQPHiEAotkRtvSadoQ1sSNsBTvC2tkRNp8dYTfsCOtnRxhckACIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBodoTdsCOsnx1hFXaEtbMjbD47wrh7doTBIwRANAEQzZK8pde0JK+JJXkrWJLXzpK8+SzJu2FJXj9L8uCCBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANGqAZS+UwXOrja/rgBEEwDRBEA0ARBtVQA+CHNFa+bWFYBoAuAurb1rWR2A2yDukSsA0ZoCcBXgClrm1JK8G5bk9YtZktd7FbAkr50lee1a57P7lsbyPM6m583Zh2CidQfgAzFn0juPm64AIuAMtsyhWyAubeub8OYAXAU4yojZG3IFEAF7GzVzw26BRMBeRs7a0M8AImC20TM2bWD9QxmjzXiDnfZbIFcDRpo1T9OH1JWALWa/ke72Li0EWu1xF7H7bYoQqNnz9vmw+3QhcOuoz4yn+KAqhlxH/7LkFAG8TBD36ehhBwAAAAAI9D8FrVc4Z9sG7wAAAABJRU5ErkJggg==", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"}, {"src": "data:image/png;base64,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", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}]};
+      const blob = new Blob([JSON.stringify(m)], {type:'application/manifest+json'});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('link');
+      link.rel = 'manifest';
+      link.href = url;
+      document.head.appendChild(link);
+    })();
+  </script>
+  <style>
+    
+    .center{display:flex;justify-content:center;align-items:center;}
+:root{
+      --tile-w: clamp(44px, 6.2vw, 80px);
+      --tile-h: clamp(44px, 6.2vw, 80px);
+      --gap: clamp(3px, 0.6vw, 6px);
+
+      --bg: #f8f9fa;
+      --ink: #1f1f1f;
+      --brand: #1a3c6d;
+      --card: #ffffff;
+      --border: rgba(0,0,0,0.18);
+
+      /* Palette tuned to resemble the reference photo */
+      --alkali:           #5f79b6;
+      --alkaline:         #8fb0dc;
+      --transition:       #d5dbe6;
+      --posttransition:   #a9c3e6;
+      --lanthanide:       #d7b7db;
+      --actinide:         #caa6d6;
+      --metalloid:        #cf7f63;
+      --nonmetal:         #7ebd77;
+      --halogen:          #6ab86a;
+      --noble:            #4aa25a;
+      --unknown:          #ececec;
+    }
+
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 14px;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    h1{
+      text-align: center;
+      color: var(--brand);
+      margin: 8px 0 6px;
+      font-size: clamp(18px, 3.6vw, 30px);
+      letter-spacing: 0.2px;
+    }
+
+    .subhead{
+      text-align: center;
+      margin: 0 0 10px;
+      font-size: clamp(12px, 2.0vw, 14px);
+      color: rgba(0,0,0,0.65);
+    }
+
+    .table-wrap{
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 10px;
+    }
+
+    #group-header, #periodic-table{
+      display: grid;
+      grid-template-columns: repeat(18, var(--tile-w));
+      grid-gap: var(--gap);
+      width: max-content;
+      margin: 0 auto;
+    }
+
+    #group-header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 6px 0;
+      background: linear-gradient(to bottom, rgba(248,249,250,0.98), rgba(248,249,250,0.85));
+      backdrop-filter: blur(6px);
+    }
+
+    .group-cell{
+      height: calc(var(--tile-h) * 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.92);
+      color: #3a3a3a;
+      font-weight: 800;
+      font-size: clamp(10px, 1.5vw, 12px);
+      user-select: none;
+    }
+
+    .element, .empty{
+      width: var(--tile-w);
+      height: var(--tile-h);
+      border-radius: 12px;
+      box-sizing: border-box;
+    }
+
+    .element{
+      border: 1px solid var(--border);
+      text-align: center;
+      padding: clamp(4px, 0.7vw, 8px) clamp(3px, 0.6vw, 6px);
+      cursor: pointer;
+      transition: transform 0.12s, box-shadow 0.12s, filter 0.12s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.10);
+      user-select: none;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+      overflow: hidden;
+    }
+
+    .element:hover{
+      transform: translateY(-1px) scale(1.05);
+      z-index: 5;
+      box-shadow: 0 8px 14px rgba(0,0,0,0.18);
+      filter: saturate(1.03) contrast(1.02);
+    }
+
+    .element .number{ font-size: clamp(9px, 1.35vw, 12px); opacity: 0.85; line-height: 1; }
+    .element .symbol{ font-size: clamp(13px, 2.3vw, 20px); font-weight: 900; line-height: 1.1; }
+    .element .name{
+      font-size: clamp(7px, 1.25vw, 10px);
+      opacity: 0.92;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 1.1;
+    }
+
+    .empty{
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      cursor: default;
+    }
+
+    .f-block-placeholder{
+      background: linear-gradient(135deg, rgba(26,60,109,0.12), rgba(255,255,255,0.92));
+      border-color: rgba(26,60,109,0.25);
+      color: #233a5c;
+      font-style: italic;
+    }
+
+    .f-block-label{
+      text-align: center;
+      margin: 10px 0 6px;
+      font-weight: 900;
+      color: #1b2b40;
+      font-size: clamp(13px, 2.2vw, 16px);
+    }
+
+    #lanthanides, #actinides{
+      display: grid;
+      grid-template-columns: repeat(15, var(--tile-w));
+      grid-gap: var(--gap);
+      width: max-content;
+      margin: 0 auto 12px;
+    }
+
+    /* Category colours */
+    .cat-alkali         { background: var(--alkali); color: #0f172a; }
+    .cat-alkaline       { background: var(--alkaline); color: #0f172a; }
+    .cat-transition     { background: var(--transition); }
+    .cat-posttransition { background: var(--posttransition); }
+    .cat-metalloid      { background: var(--metalloid); color: #1f1f1f; }
+    .cat-nonmetal       { background: var(--nonmetal); color: #0b1f0f; }
+    .cat-halogen        { background: var(--halogen); color: #0b1f0f; }
+    .cat-noble          { background: var(--noble); color: #0b1f0f; }
+    .cat-lanthanide     { background: var(--lanthanide); }
+    .cat-actinide       { background: var(--actinide); }
+    .cat-unknown        { background: var(--unknown); }
+
+    /* Modal */
+    #overlay{
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.62);
+      z-index: 900;
+    }
+
+    #detail-view{
+      display: none;
+      position: fixed;
+      inset: 10px;
+      margin: auto;
+      background: var(--card);
+      border-radius: 18px;
+      box-shadow: 0 12px 34px rgba(0,0,0,0.45);
+      z-index: 1000;
+      width: min(980px, calc(100vw - 20px));
+      height: min(720px, calc(100vh - 20px));
+      overflow: hidden; /* internal scroll areas only */
+      flex-direction: column;
+    
+      padding-bottom: 0px; /* fallback */
+      padding-bottom: constant(safe-area-inset-bottom);
+      padding-bottom: env(safe-area-inset-bottom);
+    
+      padding-top: 6px; /* prevent header/title from touching rounded edge */
+    }
+
+    /* Sticky header: never clipped */
+    .modal-header{
+      flex: 0 0 auto;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 20px 14px 10px; /* stronger fallback so title never clips */
+      padding-top: 28px;       /* extra breathing room for rounded corner */
+      text-align: center;
+    }
+    /* Safe-area support (iOS notch etc). Browsers that don't understand env()/constant() will keep the fallback above. */
+    .modal-header{
+      padding-top: calc(28px + constant(safe-area-inset-top));
+      padding-top: calc(28px + env(safe-area-inset-top));
+    }
+
+    #element-title{
+      margin: 0 0 4px;
+      font-size: clamp(18px, 3.6vw, 30px);
+      line-height: 1.15;
+      word-break: break-word;
+    }
+
+    .quick-line{
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 6px;
+      margin-top: 2px;
+      font-size: clamp(12px, 2.0vw, 14px);
+      color: rgba(0,0,0,0.72);
+    }
+    .quick-line::-webkit-scrollbar{ height: 6px; }
+    .quick-line::-webkit-scrollbar-thumb{ background: rgba(0,0,0,0.15); border-radius: 999px; }
+
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+
+      /* Match the secondary button style */
+      border: 1px solid rgba(26,60,109,0.22);
+      background: rgba(26,60,109,0.12);
+      color: #1a3c6d;
+
+      font-weight: 700;
+      letter-spacing: 0.1px;
+      white-space: nowrap;
+    }
+
+    /* Body area scrolls */
+    .modal-body{
+      flex: 1 1 auto;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 14px; /* fallback */
+      padding-bottom: 30px; /* fallback so bottom buttons never clip */
+      padding-bottom: calc(30px + constant(safe-area-inset-bottom));
+      padding-bottom: calc(30px + env(safe-area-inset-bottom));
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .card{
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 14px;
+      padding: 12px;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+      color: #1b2b40;
+    }
+
+    #element-info{
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.38;
+    }
+
+    .fact{
+      margin-top: 8px;
+      font-style: italic;
+      color: rgba(0,0,0,0.75);
+    }
+
+    .shell-row{
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .shell-chip{
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.10);
+      background: rgba(245,246,248,0.9);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .shell-chip strong{ font-weight: 900; }
+
+    /* Bohr */
+    #bohr-diagram{
+      display: block;
+      margin: 8px auto 0;
+      width: 420px;
+      height: 420px;
+      max-width: 100%;
+      max-height: 56vh;
+    }
+    .shell{ fill: none; stroke: rgba(0,0,0,0.35); stroke-width: 1.5; }
+    .shell-inner{ stroke: rgba(0,0,0,0.22); }
+    .shell-outer{ stroke: rgba(0,0,0,0.55); stroke-width: 2.2; }
+    .electron{ fill: #0066cc; }
+    .electron-outer{ fill: #0052a3; }
+    .nucleus{ fill: #c0392b; }
+
+    /* Lewis */
+    #lewis{
+      display: block;
+      margin: 4px auto 0;
+      width: 240px;
+      height: 240px;
+      max-width: 100%;
+    }
+    .lewis-dot{ fill: #1f5aa5; }
+    .lewis-symbol{ font-weight: 900; font-size: 46px; fill: #111; }
+    .lewis-label{ font-size: 12px; fill: rgba(0,0,0,0.70); font-weight: 700; }
+
+    .bonding-lines{
+      font-size: 14px;
+      line-height: 1.35;
+      margin: 0;
+    }
+    .bonding-lines b{ font-weight: 900; }
+
+    details{
+      margin-top: 10px;
+    }
+    summary{
+      cursor: pointer;
+      font-weight: 900;
+      color: #1a3c6d;
+    }
+    .explain{
+      margin-top: 6px;
+      color: rgba(0,0,0,0.78);
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    .actions{
+      margin-top: 12px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn{
+      padding: 10px 18px;
+      font-size: 16px;
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      width: min(260px, 100%);
+      touch-action: manipulation;
+    }
+    .btn.secondary{
+      background: rgba(26,60,109,0.12);
+      color: #1a3c6d;
+      border: 1px solid rgba(26,60,109,0.22);
+    }
+
+    @media (max-width: 860px){
+      .grid{
+        grid-template-columns: 1fr;
+      }
+      .card{ padding: 10px; }
+      #bohr-diagram{
+        max-height: 60vh;
+      }
+      #detail-view{
+        height: calc(100vh - 20px);
+      }
+    }
+  
+    .top-controls{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      margin: 6px 0 6px;
+    }
+    .toggle{
+      padding: 9px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.14);
+      background: rgba(255,255,255,0.92);
+      color: rgba(0,0,0,0.82);
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      touch-action: manipulation;
+    }
+    .toggle:active{ transform: translateY(1px); }
+
+    /* Dark mode */
+    html[data-theme="dark"]{
+      --bg: #0b1220;
+      --ink: #e5e7eb;
+      --brand: #a9c7ff;
+      --card: #0f172a;
+      --border: rgba(255,255,255,0.18);
+    }
+
+    html[data-theme="dark"] body{
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    html[data-theme="dark"] .subhead{
+      color: rgba(229,231,235,0.75);
+    }
+
+    html[data-theme="dark"] #group-header{
+      background: linear-gradient(to bottom, rgba(11,18,32,0.98), rgba(11,18,32,0.82));
+    }
+
+    html[data-theme="dark"] .group-cell{
+      background: rgba(15,23,42,0.92);
+      color: rgba(229,231,235,0.85);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    html[data-theme="dark"] .element{
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.55);
+    }
+
+    html[data-theme="dark"] .element:hover{
+      box-shadow: 0 10px 18px rgba(0,0,0,0.70);
+    }
+
+    html[data-theme="dark"] .toggle{
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(15,23,42,0.92);
+      color: rgba(229,231,235,0.90);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.55);
+    }
+
+    html[data-theme="dark"] #overlay{
+      background: rgba(0,0,0,0.72);
+    }
+
+    html[data-theme="dark"] #detail-view{
+      background: var(--card);
+    }
+
+    html[data-theme="dark"] .modal-header{
+      background: rgba(15,23,42,0.96);
+      border-bottom-color: rgba(255,255,255,0.10);
+    }
+
+    html[data-theme="dark"] .pill{
+      border-color: rgba(169,199,255,0.22);
+      background: rgba(169,199,255,0.12);
+      color: #a9c7ff;
+    }
+    html[data-theme="dark"] .shell-chip{
+      border-color: rgba(255,255,255,0.14);
+      background: rgba(2,6,23,0.55);
+      color: rgba(229,231,235,0.90);
+    }
+
+    html[data-theme="dark"] .card{
+      background: rgba(15,23,42,0.96);
+      border-color: rgba(255,255,255,0.12);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.50);
+    }
+
+    html[data-theme="dark"] .card h3{
+      color: rgba(229,231,235,0.92);
+    }
+
+    html[data-theme="dark"] #element-info,
+    html[data-theme="dark"] .bonding-lines,
+    html[data-theme="dark"] .explain{
+      color: rgba(229,231,235,0.88);
+    }
+
+    html[data-theme="dark"] .fact{
+      color: rgba(229,231,235,0.76);
+    }
+
+    html[data-theme="dark"] summary{
+      color: #a9c7ff;
+    }
+
+    html[data-theme="dark"] .btn.secondary{
+      background: rgba(169,199,255,0.12);
+      color: #a9c7ff;
+      border-color: rgba(169,199,255,0.22);
+    }
+
+  
+    /* Keep element tile text readable in BOTH themes.
+       In dark mode we still want dark text on the (light) category tiles. */
+    .element{
+      color: rgba(17,24,39,0.92);
+    }
+    .element .symbol{
+      color: rgba(17,24,39,0.95);
+    }
+    .element .num{
+      color: rgba(17,24,39,0.70);
+    }
+    .element .name{
+      color: rgba(17,24,39,0.78);
+    }
+    /* Slight extra clarity in dark mode (optional but helps on OLED) */
+    html[data-theme="dark"] .element .symbol{
+      text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+    }
+
+  
+    /* Dark mode: make SVG diagram strokes/text readable on dark cards */
+    html[data-theme="dark"] .shell{ stroke: rgba(229,231,235,0.32); }
+    html[data-theme="dark"] .shell-inner{ stroke: rgba(229,231,235,0.18); }
+    html[data-theme="dark"] .shell-outer{ stroke: rgba(229,231,235,0.42); }
+    html[data-theme="dark"] .lewis-label{ fill: rgba(229,231,235,0.80); }
+    html[data-theme="dark"] .lewis-symbol{ fill: rgba(229,231,235,0.92); }
+
+  
+    /* v21: Make f-block section headings white in dark mode */
+    html[data-theme="dark"] .f-block-label,
+    html[data-theme="dark"] .section-title,
+    html[data-theme="dark"] .subsection-title,
+    html[data-theme="dark"] h2.section,
+    html[data-theme="dark"] .lan-act-label,
+    html[data-theme="dark"] .row-label{
+      color: rgba(255,255,255,0.92) !important;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+    }
+
+  
+    /* =========================
+       Filters (state / group / category)
+       ========================= */
+    .filter-bar{
+      max-width: 1200px;
+      margin: 14px auto 10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+    html[data-theme="dark"] .filter-bar{
+      border-color: rgba(255,255,255,0.10);
+      background: rgba(17,24,39,0.55);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.55);
+    }
+    .filter-row{
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .filter-item{
+      display: grid;
+      gap: 6px;
+      min-width: 150px;
+    }
+    .filter-label{
+      font-weight: 800;
+      font-size: 13px;
+      color: rgba(17,24,39,0.78);
+      letter-spacing: -0.2px;
+    }
+    html[data-theme="dark"] .filter-label{
+      color: rgba(255,255,255,0.82);
+    }
+    .filter-select{
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 14px;
+      border: 1px solid rgba(26,60,109,0.22);
+      background: rgba(26,60,109,0.10);
+      color: #1a3c6d;
+      padding: 10px 12px;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      outline: none;
+      min-width: 150px;
+    }
+    .filter-select:focus{
+      border-color: rgba(26,60,109,0.40);
+      box-shadow: 0 0 0 4px rgba(26,60,109,0.18);
+    }
+    html[data-theme="dark"] .filter-select{
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.92);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.45);
+    }
+    html[data-theme="dark"] .filter-select:focus{
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.12);
+    }
+    .filter-count{
+      margin-top: 10px;
+      text-align: center;
+      font-weight: 800;
+      color: rgba(17,24,39,0.70);
+    }
+    html[data-theme="dark"] .filter-count{
+      color: rgba(255,255,255,0.76);
+    }
+
+    /* When filtered out: keep layout but visually de-emphasize */
+    .element.filtered-out{
+      opacity: 0.18;
+      filter: grayscale(1);
+      pointer-events: none;
+    }
+
+  
+/* --- f-block placeholder tiles (57–71 / 89–103) --- */
+.element.f-block-placeholder{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:4px;
+  padding:8px 6px;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+.element.f-block-placeholder .atomic{
+  font-weight: 900;
+  font-size: clamp(12px, 2.9vw, 15px) !important;
+  line-height: 1.05;
+  opacity: 0.95;
+  white-space: nowrap;
+}
+
+.element.f-block-placeholder .symbol{
+  font-weight: 900;
+  font-size: clamp(16px, 4.2vw, 22px) !important;
+  line-height: 1.0;
+  white-space: nowrap;
+}
+
+.element.f-block-placeholder .name{
+  font-weight: 800;
+  font-size: clamp(10px, 2.4vw, 12px) !important;
+  line-height: 1.05;
+  opacity: 0.95;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* f-block placeholders respect filtered-out like all other tiles */
+
+</style>
+</head>
+<body>
+  <h1>Interactive Periodic Table</h1>
+  <div class="top-controls" aria-label="Display options">
+    <button id="theme-toggle" class="toggle" type="button" aria-pressed="false">🌙 Dark mode</button>
+  </div>
+  <div class="subhead" id="completion-banner"></div>
+
+  <div class="filter-bar" role="region" aria-label="Filters">
+    <div class="filter-row">
+      <label class="filter-item">
+        <span class="filter-label">State</span>
+        <select id="filter-state" class="filter-select" aria-label="Filter by state"></select>
+      </label>
+
+      <label class="filter-item">
+        <span class="filter-label">Group</span>
+        <select id="filter-group" class="filter-select" aria-label="Filter by group"></select>
+      </label>
+
+      <label class="filter-item">
+        <span class="filter-label">Classification</span>
+        <select id="filter-category" class="filter-select" aria-label="Filter by category"></select>
+      </label>
+
+      <button id="filter-clear" class="btn secondary" type="button" aria-label="Clear filters">Clear</button>
+    </div>
+
+    <div class="filter-count" id="filter-count" aria-live="polite"></div>
+  </div>
+
+
+  <div class="table-wrap" aria-label="Periodic table (scroll horizontally on phones)">
+    <div id="group-header" aria-label="Group numbers"></div>
+    <div id="periodic-table" aria-label="Periodic table"></div>
+  </div>
+
+  <div class="f-block-label">Lanthanides (57–71)</div>
+  <div class="table-wrap" aria-label="Lanthanides (scroll horizontally if needed)">
+    <div id="lanthanides" aria-label="Lanthanides"></div>
+  </div>
+
+  <div class="f-block-label">Actinides (89–103)</div>
+  <div class="table-wrap" aria-label="Actinides (scroll horizontally if needed)">
+    <div id="actinides" aria-label="Actinides"></div>
+  </div>
+
+  <div id="overlay" tabindex="-1" aria-hidden="true"></div>
+
+  <div id="detail-view" role="dialog" aria-modal="true" aria-labelledby="element-title">
+    <div class="modal-header">
+      <h2 id="element-title"></h2>
+      <div class="quick-line">
+        <span class="pill" id="pill-num">#</span>
+        <span class="pill" id="pill-mass">Mass</span>
+        <span class="pill" id="pill-type">Type</span>
+        <span class="pill" id="pill-state">State</span>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <div class="grid">
+        <div class="card" id="bohr-card">
+          <h3>Bohr model (all electrons)</h3>
+          <svg id="bohr-diagram" viewBox="0 0 320 320" preserveAspectRatio="xMidYMid meet" aria-label="Bohr diagram"></svg>
+          <div class="center" style="margin-top:10px; margin-bottom:8px; width:100%;">
+            <button class="btn secondary" id="toggle-valence" type="button">Show only outer shell</button>
+          </div>
+
+          <div class="shell-row" id="shell-row" aria-label="Shell electron counts"></div>
+        </div>
+
+        <div class="card">
+          <h3>Lewis dots (valence electrons)</h3>
+          <svg id="lewis" viewBox="0 0 240 240" aria-label="Lewis dot diagram"></svg>
+
+          <h3 style="margin-top:12px;">Bonding behaviour (simple)</h3>
+          <p class="bonding-lines" id="bonding"></p>
+
+          <details>
+            <summary>Why does it bond like that?</summary>
+            <div class="explain" id="explain"></div>
+          </details>
+
+          <h3 style="margin-top:12px;">Quick facts</h3>
+          <p id="element-info"></p>
+          <div class="fact" id="element-fact"></div>
+
+          <div class="actions">
+            
+            <button class="btn" id="close-btn" type="button">Back to Table</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------------------------
+    // Data
+    // ---------------------------
+    const elementsPart1 = [
+      {group: 1, period: 1, symbol: "H",  name: "Hydrogen",     num: 1,  mass: 1.008,   fact: "Hydrogen is the most abundant element in the universe.", electrons: [1]},
+      {group: 18,period: 1, symbol: "He", name: "Helium",       num: 2,  mass: 4.0026,  fact: "Helium is used in balloons and as a coolant.", electrons: [2]},
+      {group: 1, period: 2, symbol: "Li", name: "Lithium",      num: 3,  mass: 6.94,    fact: "Lithium is used in batteries.", electrons: [2,1]},
+      {group: 2, period: 2, symbol: "Be", name: "Beryllium",    num: 4,  mass: 9.0122,  fact: "Beryllium is used in alloys for aerospace.", electrons: [2,2]},
+      {group: 13,period: 2, symbol: "B",  name: "Boron",        num: 5,  mass: 10.81,   fact: "Boron is used in glass and detergents.", electrons: [2,3]},
+      {group: 14,period: 2, symbol: "C",  name: "Carbon",       num: 6,  mass: 12.011,  fact: "Carbon is the basis of life.", electrons: [2,4]},
+      {group: 15,period: 2, symbol: "N",  name: "Nitrogen",     num: 7,  mass: 14.007,  fact: "Nitrogen makes up 78% of the atmosphere.", electrons: [2,5]},
+      {group: 16,period: 2, symbol: "O",  name: "Oxygen",       num: 8,  mass: 15.999,  fact: "Oxygen is essential for respiration.", electrons: [2,6]},
+      {group: 17,period: 2, symbol: "F",  name: "Fluorine",     num: 9,  mass: 18.998,  fact: "Fluorine is the most reactive element.", electrons: [2,7]},
+      {group: 18,period: 2, symbol: "Ne", name: "Neon",         num: 10, mass: 20.18,   fact: "Neon is used in signs.", electrons: [2,8]},
+      {group: 1, period: 3, symbol: "Na", name: "Sodium",       num: 11, mass: 22.99,   fact: "Sodium is used in table salt.", electrons: [2,8,1]},
+      {group: 2, period: 3, symbol: "Mg", name: "Magnesium",    num: 12, mass: 24.305,  fact: "Magnesium is used in alloys.", electrons: [2,8,2]},
+      {group: 13,period: 3, symbol: "Al", name: "Aluminum",     num: 13, mass: 26.982,  fact: "Aluminum is used in cans.", electrons: [2,8,3]},
+      {group: 14,period: 3, symbol: "Si", name: "Silicon",      num: 14, mass: 28.085,  fact: "Silicon is used in chips.", electrons: [2,8,4]},
+      {group: 15,period: 3, symbol: "P",  name: "Phosphorus",   num: 15, mass: 30.974,  fact: "Phosphorus is used in matches.", electrons: [2,8,5]},
+      {group: 16,period: 3, symbol: "S",  name: "Sulfur",       num: 16, mass: 32.06,   fact: "Sulfur is used in gunpowder.", electrons: [2,8,6]},
+      {group: 17,period: 3, symbol: "Cl", name: "Chlorine",     num: 17, mass: 35.45,   fact: "Chlorine is used in pools.", electrons: [2,8,7]},
+      {group: 18,period: 3, symbol: "Ar", name: "Argon",        num: 18, mass: 39.948,  fact: "Argon is used in welding.", electrons: [2,8,8]},
+      {group: 1, period: 4, symbol: "K",  name: "Potassium",    num: 19, mass: 39.098,  fact: "Potassium is in bananas.", electrons: [2,8,8,1]},
+      {group: 2, period: 4, symbol: "Ca", name: "Calcium",      num: 20, mass: 40.078,  fact: "Calcium is in bones.", electrons: [2,8,8,2]},
+      {group: 3, period: 4, symbol: "Sc", name: "Scandium",     num: 21, mass: 44.956,  fact: "Scandium is used in alloys.", electrons: [2,8,9,2]},
+      {group: 4, period: 4, symbol: "Ti", name: "Titanium",     num: 22, mass: 47.867,  fact: "Titanium is strong and light.", electrons: [2,8,10,2]},
+      {group: 5, period: 4, symbol: "V",  name: "Vanadium",     num: 23, mass: 50.942,  fact: "Vanadium is used in steel.", electrons: [2,8,11,2]},
+      {group: 6, period: 4, symbol: "Cr", name: "Chromium",     num: 24, mass: 51.996,  fact: "Chromium is used in stainless steel.", electrons: [2,8,13,1]},
+      {group: 7, period: 4, symbol: "Mn", name: "Manganese",    num: 25, mass: 54.938,  fact: "Manganese is used in batteries.", electrons: [2,8,13,2]},
+      {group: 8, period: 4, symbol: "Fe", name: "Iron",         num: 26, mass: 55.845,  fact: "Iron is used in steel.", electrons: [2,8,14,2]},
+      {group: 9, period: 4, symbol: "Co", name: "Cobalt",       num: 27, mass: 58.933,  fact: "Cobalt is used in magnets.", electrons: [2,8,15,2]},
+      {group: 10,period: 4, symbol: "Ni", name: "Nickel",       num: 28, mass: 58.693,  fact: "Nickel is used in coins.", electrons: [2,8,16,2]},
+      {group: 11,period: 4, symbol: "Cu", name: "Copper",       num: 29, mass: 63.546,  fact: "Copper is used in wires.", electrons: [2,8,18,1]},
+      {group: 12,period: 4, symbol: "Zn", name: "Zinc",         num: 30, mass: 65.38,   fact: "Zinc is used in batteries.", electrons: [2,8,18,2]}
+    ];
+
+    const elementsPart2 = [
+      {group: 13,period: 4, symbol: "Ga", name: "Gallium",      num: 31, mass: 69.723,  fact: "Gallium melts in hand.", electrons: [2,8,18,3]},
+      {group: 14,period: 4, symbol: "Ge", name: "Germanium",    num: 32, mass: 72.63,   fact: "Germanium is used in semiconductors.", electrons: [2,8,18,4]},
+      {group: 15,period: 4, symbol: "As", name: "Arsenic",      num: 33, mass: 74.922,  fact: "Arsenic is toxic.", electrons: [2,8,18,5]},
+      {group: 16,period: 4, symbol: "Se", name: "Selenium",     num: 34, mass: 78.971,  fact: "Selenium is used in photocopiers.", electrons: [2,8,18,6]},
+      {group: 17,period: 4, symbol: "Br", name: "Bromine",      num: 35, mass: 79.904,  fact: "Bromine is a liquid halogen.", electrons: [2,8,18,7]},
+      {group: 18,period: 4, symbol: "Kr", name: "Krypton",      num: 36, mass: 83.798,  fact: "Krypton is a noble gas.", electrons: [2,8,18,8]},
+      {group: 1, period: 5, symbol: "Rb", name: "Rubidium",     num: 37, mass: 85.468,  fact: "Rubidium is highly reactive.", electrons: [2,8,18,8,1]},
+      {group: 2, period: 5, symbol: "Sr", name: "Strontium",    num: 38, mass: 87.62,   fact: "Strontium is used in fireworks.", electrons: [2,8,18,8,2]},
+      {group: 3, period: 5, symbol: "Y",  name: "Yttrium",      num: 39, mass: 88.906,  fact: "Yttrium is used in LEDs.", electrons: [2,8,18,9,2]},
+      {group: 4, period: 5, symbol: "Zr", name: "Zirconium",    num: 40, mass: 91.224,  fact: "Zirconium is used in nuclear reactors.", electrons: [2,8,18,10,2]},
+      {group: 5, period: 5, symbol: "Nb", name: "Niobium",      num: 41, mass: 92.906,  fact: "Niobium is used in alloys.", electrons: [2,8,18,12,1]},
+      {group: 6, period: 5, symbol: "Mo", name: "Molybdenum",   num: 42, mass: 95.95,   fact: "Molybdenum is used in steel.", electrons: [2,8,18,13,1]},
+      {group: 7, period: 5, symbol: "Tc", name: "Technetium",   num: 43, mass: 98,      fact: "Technetium is radioactive.", electrons: [2,8,18,13,2]},
+      {group: 8, period: 5, symbol: "Ru", name: "Ruthenium",    num: 44, mass: 101.07,  fact: "Ruthenium is used in electronics.", electrons: [2,8,18,15,1]},
+      {group: 9, period: 5, symbol: "Rh", name: "Rhodium",      num: 45, mass: 102.91,  fact: "Rhodium is used in catalytic converters.", electrons: [2,8,18,16,1]},
+      {group: 10,period: 5, symbol: "Pd", name: "Palladium",    num: 46, mass: 106.42,  fact: "Palladium is used in jewelry.", electrons: [2,8,18,18]},
+      {group: 11,period: 5, symbol: "Ag", name: "Silver",       num: 47, mass: 107.87,  fact: "Silver is used in photography.", electrons: [2,8,18,18,1]},
+      {group: 12,period: 5, symbol: "Cd", name: "Cadmium",      num: 48, mass: 112.41,  fact: "Cadmium is used in batteries.", electrons: [2,8,18,18,2]},
+      {group: 13,period: 5, symbol: "In", name: "Indium",       num: 49, mass: 114.82,  fact: "Indium is used in screens.", electrons: [2,8,18,18,3]},
+      {group: 14,period: 5, symbol: "Sn", name: "Tin",          num: 50, mass: 118.71,  fact: "Tin is used in solder.", electrons: [2,8,18,18,4]},
+      {group: 15,period: 5, symbol: "Sb", name: "Antimony",     num: 51, mass: 121.76,  fact: "Antimony is used in alloys.", electrons: [2,8,18,18,5]},
+      {group: 16,period: 5, symbol: "Te", name: "Tellurium",    num: 52, mass: 127.6,   fact: "Tellurium is used in solar panels.", electrons: [2,8,18,18,6]},
+      {group: 17,period: 5, symbol: "I",  name: "Iodine",       num: 53, mass: 126.9,   fact: "Iodine is used in medicine.", electrons: [2,8,18,18,7]},
+      {group: 18,period: 5, symbol: "Xe", name: "Xenon",        num: 54, mass: 131.29,  fact: "Xenon is used in lamps.", electrons: [2,8,18,18,8]},
+      {group: 1, period: 6, symbol: "Cs", name: "Cesium",       num: 55, mass: 132.91,  fact: "Cesium is used in atomic clocks.", electrons: [2,8,18,18,8,1]},
+      {group: 2, period: 6, symbol: "Ba", name: "Barium",       num: 56, mass: 137.33,  fact: "Barium is used in X-rays.", electrons: [2,8,18,18,8,2]},
+      {group: 3, period: 6, symbol: "La", name: "Lanthanum",    num: 57, mass: 138.91,  fact: "Lanthanum is used in optics.", electrons: [2,8,18,18,9,2]},
+      {group: 3, period: 6, symbol: "Ce", name: "Cerium",       num: 58, mass: 140.12,  fact: "Cerium is used in catalytic converters.", electrons: [2,8,18,19,9,2]},
+      {group: 3, period: 6, symbol: "Pr", name: "Praseodymium", num: 59, mass: 140.91,  fact: "Praseodymium is used in magnets.", electrons: [2,8,18,21,8,2]},
+      {group: 3, period: 6, symbol: "Nd", name: "Neodymium",    num: 60, mass: 144.24,  fact: "Neodymium is used in magnets.", electrons: [2,8,18,22,8,2]}
+    ];
+
+    const elementsPart3 = [
+      {group: 3, period: 6, symbol: "Pm", name: "Promethium",   num: 61, mass: 145,     fact: "Promethium is radioactive.", electrons: [2,8,18,23,8,2]},
+      {group: 3, period: 6, symbol: "Sm", name: "Samarium",     num: 62, mass: 150.36,  fact: "Samarium is used in magnets.", electrons: [2,8,18,24,8,2]},
+      {group: 3, period: 6, symbol: "Eu", name: "Europium",     num: 63, mass: 151.96,  fact: "Europium is used in phosphors.", electrons: [2,8,18,25,8,2]},
+      {group: 3, period: 6, symbol: "Gd", name: "Gadolinium",   num: 64, mass: 157.25,  fact: "Gadolinium is used in MRI.", electrons: [2,8,18,25,9,2]},
+      {group: 3, period: 6, symbol: "Tb", name: "Terbium",      num: 65, mass: 158.93,  fact: "Terbium is used in phosphors.", electrons: [2,8,18,27,8,2]},
+      {group: 3, period: 6, symbol: "Dy", name: "Dysprosium",   num: 66, mass: 162.5,   fact: "Dysprosium is used in magnets.", electrons: [2,8,18,28,8,2]},
+      {group: 3, period: 6, symbol: "Ho", name: "Holmium",      num: 67, mass: 164.93,  fact: "Holmium is used in lasers.", electrons: [2,8,18,29,8,2]},
+      {group: 3, period: 6, symbol: "Er", name: "Erbium",       num: 68, mass: 167.26,  fact: "Erbium is used in fiber optics.", electrons: [2,8,18,30,8,2]},
+      {group: 3, period: 6, symbol: "Tm", name: "Thulium",      num: 69, mass: 168.93,  fact: "Thulium is used in lasers.", electrons: [2,8,18,31,8,2]},
+      {group: 3, period: 6, symbol: "Yb", name: "Ytterbium",    num: 70, mass: 173.05,  fact: "Ytterbium is used in lasers.", electrons: [2,8,18,32,8,2]},
+      {group: 3, period: 6, symbol: "Lu", name: "Lutetium",     num: 71, mass: 174.97,  fact: "Lutetium is used in PET scans.", electrons: [2,8,18,32,9,2]},
+      {group: 4, period: 6, symbol: "Hf", name: "Hafnium",      num: 72, mass: 178.49,  fact: "Hafnium is used in reactors.", electrons: [2,8,18,32,10,2]},
+      {group: 5, period: 6, symbol: "Ta", name: "Tantalum",     num: 73, mass: 180.95,  fact: "Tantalum is used in capacitors.", electrons: [2,8,18,32,11,2]},
+      {group: 6, period: 6, symbol: "W",  name: "Tungsten",     num: 74, mass: 183.84,  fact: "Tungsten has high melting point.", electrons: [2,8,18,32,12,2]},
+      {group: 7, period: 6, symbol: "Re", name: "Rhenium",      num: 75, mass: 186.21,  fact: "Rhenium is used in jet engines.", electrons: [2,8,18,32,13,2]},
+      {group: 8, period: 6, symbol: "Os", name: "Osmium",       num: 76, mass: 190.23,  fact: "Osmium is the densest metal.", electrons: [2,8,18,32,14,2]},
+      {group: 9, period: 6, symbol: "Ir", name: "Iridium",      num: 77, mass: 192.22,  fact: "Iridium is used in pen tips.", electrons: [2,8,18,32,15,2]},
+      {group: 10,period: 6, symbol: "Pt", name: "Platinum",     num: 78, mass: 195.08,  fact: "Platinum is used in jewelry.", electrons: [2,8,18,32,17,1]},
+      {group: 11,period: 6, symbol: "Au", name: "Gold",         num: 79, mass: 196.97,  fact: "Gold is used in electronics.", electrons: [2,8,18,32,18,1]},
+      {group: 12,period: 6, symbol: "Hg", name: "Mercury",      num: 80, mass: 200.59,  fact: "Mercury is liquid at room temp.", electrons: [2,8,18,32,18,2]},
+      {group: 13,period: 6, symbol: "Tl", name: "Thallium",     num: 81, mass: 204.38,  fact: "Thallium is toxic.", electrons: [2,8,18,32,18,3]},
+      {group: 14,period: 6, symbol: "Pb", name: "Lead",         num: 82, mass: 207.2,   fact: "Lead is used in batteries.", electrons: [2,8,18,32,18,4]},
+      {group: 15,period: 6, symbol: "Bi", name: "Bismuth",      num: 83, mass: 208.98,  fact: "Bismuth is used in medicine.", electrons: [2,8,18,32,18,5]},
+      {group: 16,period: 6, symbol: "Po", name: "Polonium",     num: 84, mass: 209,     fact: "Polonium is radioactive.", electrons: [2,8,18,32,18,6]},
+      {group: 17,period: 6, symbol: "At", name: "Astatine",     num: 85, mass: 210,     fact: "Astatine is rare and radioactive.", electrons: [2,8,18,32,18,7]},
+      {group: 18,period: 6, symbol: "Rn", name: "Radon",        num: 86, mass: 222,     fact: "Radon is a radioactive gas.", electrons: [2,8,18,32,18,8]},
+      {group: 1, period: 7, symbol: "Fr", name: "Francium",     num: 87, mass: 223,     fact: "Francium is highly radioactive.", electrons: [2,8,18,32,18,8,1]},
+      {group: 2, period: 7, symbol: "Ra", name: "Radium",       num: 88, mass: 226,     fact: "Radium is radioactive.", electrons: [2,8,18,32,18,8,2]},
+      {group: 3, period: 7, symbol: "Ac", name: "Actinium",     num: 89, mass: 227,     fact: "Actinium is radioactive.", electrons: [2,8,18,32,18,9,2]},
+      {group: 3, period: 7, symbol: "Th", name: "Thorium",      num: 90, mass: 232.04,  fact: "Thorium is radioactive.", electrons: [2,8,18,32,18,10,2]}
+    ];
+
+    const elementsPart4 = [
+      {group: 3, period: 7, symbol: "Pa", name: "Protactinium", num: 91, mass: 231.04,  fact: "Protactinium is radioactive.", electrons: [2,8,18,32,20,9,2]},
+      {group: 3, period: 7, symbol: "U",  name: "Uranium",      num: 92, mass: 238.03,  fact: "Uranium is used in nuclear power.", electrons: [2,8,18,32,21,9,2]},
+      {group: 3, period: 7, symbol: "Np", name: "Neptunium",    num: 93, mass: 237,     fact: "Neptunium is radioactive.", electrons: [2,8,18,32,22,9,2]},
+      {group: 3, period: 7, symbol: "Pu", name: "Plutonium",    num: 94, mass: 244,     fact: "Plutonium is used in nuclear weapons.", electrons: [2,8,18,32,24,8,2]},
+      {group: 3, period: 7, symbol: "Am", name: "Americium",    num: 95, mass: 243,     fact: "Americium is used in smoke detectors.", electrons: [2,8,18,32,25,8,2]},
+      {group: 3, period: 7, symbol: "Cm", name: "Curium",       num: 96, mass: 247,     fact: "Curium is radioactive.", electrons: [2,8,18,32,25,9,2]},
+      {group: 3, period: 7, symbol: "Bk", name: "Berkelium",    num: 97, mass: 247,     fact: "Berkelium is synthetic.", electrons: [2,8,18,32,27,8,2]},
+      {group: 3, period: 7, symbol: "Cf", name: "Californium",  num: 98, mass: 251,     fact: "Californium is synthetic.", electrons: [2,8,18,32,28,8,2]},
+      {group: 3, period: 7, symbol: "Es", name: "Einsteinium",  num: 99, mass: 252,     fact: "Einsteinium is synthetic.", electrons: [2,8,18,32,29,8,2]},
+      {group: 3, period: 7, symbol: "Fm", name: "Fermium",      num: 100,mass: 257,     fact: "Fermium is synthetic.", electrons: [2,8,18,32,30,8,2]},
+      {group: 3, period: 7, symbol: "Md", name: "Mendelevium",  num: 101,mass: 258,     fact: "Mendelevium is synthetic.", electrons: [2,8,18,32,31,8,2]},
+      {group: 3, period: 7, symbol: "No", name: "Nobelium",     num: 102,mass: 259,     fact: "Nobelium is synthetic.", electrons: [2,8,18,32,32,8,2]},
+      {group: 3, period: 7, symbol: "Lr", name: "Lawrencium",   num: 103,mass: 266,     fact: "Lawrencium is synthetic.", electrons: [2,8,18,32,32,8,3]},
+      {group: 4, period: 7, symbol: "Rf", name: "Rutherfordium",num: 104,mass: 267,     fact: "Rutherfordium is synthetic.", electrons: [2,8,18,32,32,10,2]},
+      {group: 5, period: 7, symbol: "Db", name: "Dubnium",      num: 105,mass: 268,     fact: "Dubnium is synthetic.", electrons: [2,8,18,32,32,11,2]},
+      {group: 6, period: 7, symbol: "Sg", name: "Seaborgium",   num: 106,mass: 269,     fact: "Seaborgium is synthetic.", electrons: [2,8,18,32,32,12,2]},
+      {group: 7, period: 7, symbol: "Bh", name: "Bohrium",      num: 107,mass: 270,     fact: "Bohrium is synthetic.", electrons: [2,8,18,32,32,13,2]},
+      {group: 8, period: 7, symbol: "Hs", name: "Hassium",      num: 108,mass: 269,     fact: "Hassium is synthetic.", electrons: [2,8,18,32,32,14,2]},
+      {group: 9, period: 7, symbol: "Mt", name: "Meitnerium",   num: 109,mass: 278,     fact: "Meitnerium is synthetic.", electrons: [2,8,18,32,32,15,2]},
+      {group: 10,period: 7, symbol: "Ds", name: "Darmstadtium", num: 110,mass: 281,     fact: "Darmstadtium is synthetic.", electrons: [2,8,18,32,32,16,2]},
+      {group: 11,period: 7, symbol: "Rg", name: "Roentgenium",  num: 111,mass: 281,     fact: "Roentgenium is synthetic.", electrons: [2,8,18,32,32,17,2]},
+      {group: 12,period: 7, symbol: "Cn", name: "Copernicium",  num: 112,mass: 285,     fact: "Copernicium is synthetic.", electrons: [2,8,18,32,32,18,2]},
+      {group: 13,period: 7, symbol: "Nh", name: "Nihonium",     num: 113,mass: 286,     fact: "Nihonium is synthetic.", electrons: [2,8,18,32,32,18,3]},
+      {group: 14,period: 7, symbol: "Fl", name: "Flerovium",    num: 114,mass: 289,     fact: "Flerovium is synthetic.", electrons: [2,8,18,32,32,18,4]},
+      {group: 15,period: 7, symbol: "Mc", name: "Moscovium",    num: 115,mass: 288,     fact: "Moscovium is synthetic.", electrons: [2,8,18,32,32,18,5]},
+      {group: 16,period: 7, symbol: "Lv", name: "Livermorium",  num: 116,mass: 293,     fact: "Livermorium is synthetic.", electrons: [2,8,18,32,32,18,6]},
+      {group: 17,period: 7, symbol: "Ts", name: "Tennessine",   num: 117,mass: 294,     fact: "Tennessine is synthetic.", electrons: [2,8,18,32,32,18,7]},
+      {group: 18,period: 7, symbol: "Og", name: "Oganesson",    num: 118,mass: 294,     fact: "Oganesson is synthetic.", electrons: [2,8,18,32,32,18,8]}
+    ];
+
+    const elements = [...elementsPart1, ...elementsPart2, ...elementsPart3, ...elementsPart4];
+
+    // ---------------------------
+    // Completion check
+    // ---------------------------
+    function checkCompletion(){
+      const present = new Set(elements.map(e => e.num));
+      const missing = [];
+      for(let i=1;i<=118;i++){
+        if(!present.has(i)) missing.push(i);
+      }
+      const banner = document.getElementById("completion-banner");
+      if(missing.length === 0){
+        banner.textContent = "Elements loaded: 118 / 118 ✓";
+      }else{
+        banner.textContent = `⚠ Missing atomic numbers: ${missing.join(", ")}`;
+      }
+    }
+
+    // ---------------------------
+    // Categories
+    // ---------------------------
+    const METALLOIDS = new Set([5, 14, 32, 33, 51, 52, 84]);
+    const POST_TRANSITION = new Set([13, 31, 49, 50, 81, 82, 83, 113, 114, 115, 116]);
+    const NONMETALS = new Set([1, 6, 7, 8, 15, 16, 34]);
+
+    function isFBlock(num){
+      return (num >= 57 && num <= 71) || (num >= 89 && num <= 103);
+    }
+
+    function categoryLabel(el){
+      if(el.num >= 57 && el.num <= 71) return "Lanthanide";
+      if(el.num >= 89 && el.num <= 103) return "Actinide";
+      if(el.group === 18) return "Noble gas";
+      if(el.group === 17) return "Halogen";
+      if(el.group === 1 && el.num !== 1) return "Alkali metal";
+      if(el.group === 2) return "Alkaline earth metal";
+      if(METALLOIDS.has(el.num)) return "Semimetal (metalloid)";
+      if(POST_TRANSITION.has(el.num)) return "Metal (post-transition)";
+      if(NONMETALS.has(el.num)) return "Nonmetal";
+      if(el.group >= 3 && el.group <= 12 && !isFBlock(el.num)) return "Transition metal";
+      return "Unknown";
+    }
+
+    function categoryClass(el){
+      if(el.num >= 57 && el.num <= 71) return "cat-lanthanide";
+      if(el.num >= 89 && el.num <= 103) return "cat-actinide";
+      if(el.group === 18) return "cat-noble";
+      if(el.group === 17) return "cat-halogen";
+      if(el.group === 1 && el.num !== 1) return "cat-alkali";
+      if(el.group === 2) return "cat-alkaline";
+      if(METALLOIDS.has(el.num)) return "cat-metalloid";
+      if(POST_TRANSITION.has(el.num)) return "cat-posttransition";
+      if(NONMETALS.has(el.num)) return "cat-nonmetal";
+      if(el.group >= 3 && el.group <= 12 && !isFBlock(el.num)) return "cat-transition";
+      return "cat-unknown";
+    }
+
+    // Room temperature state (simple, kid-friendly list)
+    // Everything else defaults to solid.
+    const GASES = new Set([1,2,7,8,9,10,17,18,36,54,86]);
+    const LIQUIDS = new Set([35,80]);
+    function stateAtRoomTemp(num){
+      if(GASES.has(num)) return "Gas";
+      if(LIQUIDS.has(num)) return "Liquid";
+      return "Solid";
+    }
+
+    
+    
+// ---------------------------
+// Filters
+// ---------------------------
+const FILTERS = { state: "All", group: "All", category: "All" };
+let __suppressFilterEvents = false;
+
+// Preferred ordering (we will only show values that actually exist for the current dataset/other filters)
+const STATE_ORDER = ["Solid","Liquid","Gas"];
+const CATEGORY_ORDER = [
+  "Alkali metal",
+  "Alkaline earth metal",
+  "Transition metal",
+  "Metal (post-transition)",
+  "Semimetal (metalloid)",
+  "Nonmetal",
+  "Halogen",
+  "Noble gas",
+  "Lanthanide",
+  "Actinide"
+];
+
+function optionEl(value, label){
+  const opt = document.createElement("option");
+  opt.value = value;
+  opt.textContent = label ?? value;
+  return opt;
+}
+
+function elementPasses(el, exceptKey){
+  // Apply current filters excluding one filter key (so we can compute available options for that key)
+  if(!el) return false;
+
+  if(exceptKey !== "state" && FILTERS.state !== "All"){
+    if(stateAtRoomTemp(el.num) !== FILTERS.state) return false;
+  }
+  if(exceptKey !== "group" && FILTERS.group !== "All"){
+    if(String(el.group) !== String(FILTERS.group)) return false;
+  }
+  if(exceptKey !== "category" && FILTERS.category !== "All"){
+    if(categoryLabel(el) !== FILTERS.category) return false;
+  }
+  return true;
+}
+
+function getAvailableCounts(key){
+  const counts = new Map();
+  for(const el of elements){
+    if(!elementPasses(el, key)) continue;
+    let v = null;
+
+    if(key === "state"){
+      v = stateAtRoomTemp(el.num);
+    }else if(key === "group"){
+      if(el.group) v = String(el.group);
+    }else if(key === "category"){
+      v = categoryLabel(el);
+    }
+
+    if(!v) continue;
+    counts.set(v, (counts.get(v) || 0) + 1);
+  }
+  return counts;
+}
+
+function rebuildSelect(selectEl, counts, currentValue, orderList, labelPrefix){
+  selectEl.innerHTML = "";
+  selectEl.appendChild(optionEl("All","All"));
+
+  let sorted = Array.from(counts.keys()).filter(v => v && v !== "All");
+
+  if(orderList){
+    const orderIndex = new Map(orderList.map((v,i)=>[v,i]));
+    sorted.sort((a,b)=>{
+      const ia = orderIndex.has(a) ? orderIndex.get(a) : 999;
+      const ib = orderIndex.has(b) ? orderIndex.get(b) : 999;
+      if(ia !== ib) return ia - ib;
+      return String(a).localeCompare(String(b));
+    });
+  }else{
+    // numeric sort for groups if possible
+    sorted.sort((a,b)=>{
+      const na = Number(a), nb = Number(b);
+      const aNum = !Number.isNaN(na), bNum = !Number.isNaN(nb);
+      if(aNum && bNum) return na - nb;
+      return String(a).localeCompare(String(b));
+    });
+  }
+
+  for(const v of sorted){
+    const c = counts.get(v) || 0;
+    const label = (labelPrefix ? `${labelPrefix} ${v}` : `${v}`) + ` (${c})`;
+    selectEl.appendChild(optionEl(v, label));
+  }
+
+  // keep selection if still available, otherwise reset to All
+  if(currentValue !== "All" && counts.has(currentValue)){
+    selectEl.value = currentValue;
+  }else{
+    selectEl.value = "All";
+  }
+}
+
+function updateFilterCount(){
+  const countEl = document.getElementById("filter-count");
+  if(!countEl) return;
+  const total = elements.length;
+  const visible = elements.filter(e => matchesFilters(e)).length;
+  const active = (FILTERS.state !== "All") || (FILTERS.group !== "All") || (FILTERS.category !== "All");
+  countEl.textContent = active
+    ? `Showing ${visible} of ${total} elements (filtered)`
+    : `Showing ${total} of ${total} elements`;
+}
+
+function initFilters(){
+  const selState = document.getElementById("filter-state");
+  const selGroup = document.getElementById("filter-group");
+  const selCat   = document.getElementById("filter-category");
+  const btnClear = document.getElementById("filter-clear");
+  if(!selState || !selGroup || !selCat || !btnClear) return;
+
+  const onChange = () => {
+    if(__suppressFilterEvents) return;
+    FILTERS.state = selState.value;
+    FILTERS.group = selGroup.value;
+    FILTERS.category = selCat.value;
+
+    // Recompute available values based on the other two filters (so dropdowns only show values that exist)
+    rebuildAllFilterOptions();
+    refreshTable();
+  };
+
+  selState.addEventListener("change", onChange);
+  selGroup.addEventListener("change", onChange);
+  selCat.addEventListener("change", onChange);
+
+  btnClear.addEventListener("click", () => {
+    FILTERS.state = "All";
+    FILTERS.group = "All";
+    FILTERS.category = "All";
+    rebuildAllFilterOptions();
+    refreshTable();
+  });
+
+  rebuildAllFilterOptions();
+}
+
+function rebuildAllFilterOptions(){
+  const selState = document.getElementById("filter-state");
+  const selGroup = document.getElementById("filter-group");
+  const selCat   = document.getElementById("filter-category");
+  if(!selState || !selGroup || !selCat) return;
+
+  __suppressFilterEvents = true;
+
+  
+const stateCounts = getAvailableCounts("state");
+const groupCounts = getAvailableCounts("group");
+const catCounts   = getAvailableCounts("category");
+
+rebuildSelect(selState, stateCounts, FILTERS.state, STATE_ORDER, null);
+rebuildSelect(selGroup, groupCounts, FILTERS.group, null, "Group");
+// Use preferred order list but only include ones present.
+rebuildSelect(selCat,   catCounts,   FILTERS.category, CATEGORY_ORDER, null);
+
+  // Sync filters to the actual selected values (they may have reset to All)
+  FILTERS.state = selState.value;
+  FILTERS.group = selGroup.value;
+  FILTERS.category = selCat.value;
+
+  __suppressFilterEvents = false;
+}
+
+function matchesFilters(el){
+  if(!el) return false;
+
+  if(FILTERS.state !== "All"){
+    if(stateAtRoomTemp(el.num) !== FILTERS.state) return false;
+  }
+  if(FILTERS.group !== "All"){
+    if(String(el.group) !== String(FILTERS.group)) return false;
+  }
+  if(FILTERS.category !== "All"){
+    if(categoryLabel(el) !== FILTERS.category) return false;
+  }
+  return true;
+}
+
+function refreshTable(){
+  createMainTable();
+  createFBlock("lanthanides", 57, 71);
+  createFBlock("actinides", 89, 103);
+  updateFilterCount();
+}
+
+// ---------------------------
+// UI rendering
+    // ---------------------------
+    function createGroupHeader(){
+      const header = document.getElementById("group-header");
+      header.innerHTML = "";
+      for(let g = 1; g <= 18; g++){
+        const cell = document.createElement("div");
+        cell.className = "group-cell";
+        cell.textContent = g;
+        header.appendChild(cell);
+      }
+    }
+
+    function createMainTable(){
+      const container = document.getElementById("periodic-table");
+      container.innerHTML = "";
+
+      for(let p = 1; p <= 7; p++){
+        for(let g = 1; g <= 18; g++){
+          const cell = document.createElement("div");
+
+          if(p === 6 && g === 3){
+            // Lanthanides placeholder (57–71)
+            cell.className = "element f-block-placeholder";
+            cell.dataset.symbol = "La";
+            cell.innerHTML = '<div class="atomic">57–71</div><div class="symbol">La–Lu</div><div class="name">Lanthanides</div>';
+            // All lanthanides are solid — hide tile if state filter excludes solids
+            const lanthStateOk = (FILTERS.state === "All" || FILTERS.state === "Solid");
+            const lanthCatOk   = (FILTERS.category === "All" || FILTERS.category === "Lanthanide");
+            if(lanthStateOk && lanthCatOk){
+              // Clickable jump only when Lanthanide category is specifically selected
+              if(FILTERS.category === "Lanthanide"){
+                cell.addEventListener("click", () => showElementDetailBySymbol("La"));
+              }
+            } else {
+              cell.classList.add("filtered-out");
+            }
+          } else if(p === 7 && g === 3){
+            // Actinides placeholder (89–103)
+            cell.className = "element f-block-placeholder";
+            cell.dataset.symbol = "Ac";
+            cell.innerHTML = '<div class="atomic">89–103</div><div class="symbol">Ac–Lr</div><div class="name">Actinides</div>';
+            // All actinides are solid — hide tile if state filter excludes solids
+            const actStateOk = (FILTERS.state === "All" || FILTERS.state === "Solid");
+            const actCatOk   = (FILTERS.category === "All" || FILTERS.category === "Actinide");
+            if(actStateOk && actCatOk){
+              // Clickable jump only when Actinide category is specifically selected
+              if(FILTERS.category === "Actinide"){
+                cell.addEventListener("click", () => showElementDetailBySymbol("Ac"));
+              }
+            } else {
+              cell.classList.add("filtered-out");
+            }
+          } else {
+            const el = elements.find(e => e.period === p && e.group === g && !isFBlock(e.num));
+            if(el){
+              cell.className = `element ${categoryClass(el)}`;
+              cell.innerHTML = `
+                <div class="number">${el.num}</div>
+                <div class="symbol">${el.symbol}</div>
+                <div class="name" title="${el.name}">${el.name}</div>
+              `;
+              cell.dataset.symbol = el.symbol;
+              if(matchesFilters(el)){ cell.addEventListener("click", showDetail); } else { cell.classList.add("filtered-out"); }
+            } else {
+              cell.className = "empty";
+            }
+          }
+
+          container.appendChild(cell);
+        }
+      }
+    }
+
+    function createFBlock(containerId, startNum, endNum){
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+
+      for(let num = startNum; num <= endNum; num++){
+        const el = elements.find(e => e.num === num);
+        if(!el) continue;
+
+        const cell = document.createElement("div");
+        cell.className = `element ${categoryClass(el)}`;
+        cell.innerHTML = `
+          <div class="number">${el.num}</div>
+          <div class="symbol">${el.symbol}</div>
+          <div class="name" title="${el.name}">${el.name}</div>
+        `;
+        cell.dataset.symbol = el.symbol;
+        if(matchesFilters(el)){ cell.addEventListener("click", showDetail); } else { cell.classList.add("filtered-out"); }
+        container.appendChild(cell);
+      }
+    }
+
+    // ---------------------------
+    // Drill-in view content
+    // ---------------------------
+    let lastShells = null;
+    let showingValenceOnly = false;
+
+    function showElementDetail(el){
+      if(!el) return;
+
+      // Title always visible now (sticky header)
+      document.getElementById("element-title").textContent = `${el.name} (${el.symbol})`;
+
+      document.getElementById("pill-num").textContent = `Atomic # ${el.num}`;
+      document.getElementById("pill-mass").textContent = `Mass ${Number(el.mass).toFixed(3)} u`;
+      document.getElementById("pill-type").textContent = categoryLabel(el);
+      document.getElementById("pill-state").textContent = `State: ${stateAtRoomTemp(el.num)}`;
+
+      document.getElementById("element-info").innerHTML = `
+        <b>Group:</b> ${el.group} &nbsp;&nbsp; <b>Period:</b> ${el.period}<br>
+        <b>Valence electrons:</b> ${valenceElectrons(el)}<br>
+        <b>Valence goal:</b> atoms “like” a full outer shell (usually 8).
+      `;
+      document.getElementById("element-fact").textContent = el.fact;
+
+      // Bonding card + explanation
+      const bond = bondingSummary(el);
+      document.getElementById("bonding").innerHTML = `
+        <b>Usually:</b> ${bond.usually}<br>
+        <b>Common ion:</b> ${bond.ion}<br>
+        <b>Bond type:</b> ${bond.bondType}<br>
+        <b>Example:</b> ${bond.example}
+      `;
+      document.getElementById("explain").textContent = bond.explain;
+
+      // Diagrams
+      lastShells = el.electrons.slice();
+      showingValenceOnly = false;
+      document.getElementById("toggle-valence").textContent = "Show only outer shell";
+      drawBohr(lastShells);
+      renderShellRow(lastShells);
+      drawLewis(el.symbol, valenceElectrons(el));
+
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("detail-view").style.display = "flex";
+      // Reset scroll to top on open.
+      const mb = document.querySelector("#detail-view .modal-body");
+      if(mb){
+        mb.scrollTop = 0;
+        requestAnimationFrame(() => { mb.scrollTop = 0; });
+      }
+      document.getElementById("overlay").setAttribute("aria-hidden", "false");
+      document.getElementById("close-btn").focus();
+    }
+
+    // Called by regular tile click events
+    function showDetail(e){
+      const symbol = e.currentTarget.dataset.symbol;
+      showElementDetailBySymbol(symbol);
+    }
+
+    // Called by f-block placeholder tiles
+    function showElementDetailBySymbol(symbol){
+      const el = elements.find(x => x.symbol === symbol);
+      showElementDetail(el);
+    }
+    function valenceElectrons(el){
+      // For this simplified Year-8 model, use last shell count in provided array.
+      // (This avoids needing full electron configuration logic.)
+      return (el.electrons && el.electrons.length) ? el.electrons[el.electrons.length - 1] : 0;
+    }
+
+    function bondingSummary(el){
+      const v = valenceElectrons(el);
+      const isMetal = (el.group === 1 && el.num !== 1) || el.group === 2 || (el.group >= 3 && el.group <= 12 && !isFBlock(el.num)) || POST_TRANSITION.has(el.num) || (el.num>=57 && el.num<=71) || (el.num>=89 && el.num<=103);
+      const isNonmetal = NONMETALS.has(el.num) || el.group === 17 || el.group === 18 || METALLOIDS.has(el.num);
+
+      let usually = "shares electrons";
+      let ion = "—";
+      let bondType = "covalent (sharing)";
+      let example = "—";
+      let explain = "Atoms bond to make their outer shell feel full. They can lose electrons, gain electrons, or share electrons.";
+
+      if(el.group === 18){
+        usually = "doesn't usually bond (already full outer shell)";
+        ion = "0";
+        bondType = "rare";
+        example = `${el.symbol} (gas)`;
+        explain = "Noble gases already have a full outer shell, so they’re very unreactive.";
+        return {usually, ion, bondType, example, explain};
+      }
+
+      // Ionic tendencies (simplified group rules)
+      if(el.group === 1 && el.num !== 1){
+        usually = "loses 1 electron";
+        ion = "+1";
+        bondType = "ionic (electron transfer)";
+        example = "NaCl";
+        explain = "Group 1 metals have 1 valence electron. Losing it gives them a full outer shell underneath.";
+      } else if(el.group === 2){
+        usually = "loses 2 electrons";
+        ion = "+2";
+        bondType = "ionic (electron transfer)";
+        example = "MgO";
+        explain = "Group 2 metals have 2 valence electrons. Losing 2 makes the next shell full.";
+      } else if(el.group === 17){
+        usually = "gains 1 electron";
+        ion = "−1";
+        bondType = "ionic (electron transfer) or covalent (sharing)";
+        example = "NaCl or HCl";
+        explain = "Halogens have 7 valence electrons, so gaining (or sharing) 1 completes the outer shell.";
+      } else if(el.group === 16){
+        usually = "gains 2 electrons or shares electrons";
+        ion = "−2";
+        bondType = "often covalent; can be ionic";
+        example = "H₂O or MgO";
+        explain = "Group 16 has 6 valence electrons. Two more electrons would make 8.";
+      } else if(el.group === 15){
+        usually = "gains 3 electrons or shares electrons";
+        ion = "−3";
+        bondType = "often covalent; can be ionic";
+        example = "NH₃";
+        explain = "Group 15 has 5 valence electrons. Three more would make 8.";
+      } else if(el.group === 14){
+        usually = "shares electrons";
+        ion = "±4 (rare in yr8)";
+        bondType = "covalent (sharing)";
+        example = "CO₂ or CH₄";
+        explain = "Group 14 has 4 valence electrons. Sharing is a neat way to get to 8 without fully losing/gaining 4.";
+      } else if(isMetal){
+        usually = "loses electrons (varies)";
+        ion = "positive ion";
+        bondType = "metallic or ionic";
+        example = "Fe in steel";
+        explain = "Metals tend to lose electrons, which helps them bond with nonmetals or form metallic bonds.";
+      } else if(isNonmetal){
+        usually = "shares electrons";
+        ion = "negative ion (sometimes)";
+        bondType = "covalent (sharing)";
+        example = "O₂, H₂O";
+        explain = "Nonmetals tend to share electrons so both atoms get a “full” outer shell feel.";
+      }
+
+      return {usually, ion, bondType, example, explain};
+    }
+
+    // ---------------------------
+    // Bohr diagram (never clipped + outer shell emphasis)
+    // ---------------------------
+    function drawBohr(shells){
+      const svg = document.getElementById("bohr-diagram");
+      svg.innerHTML = "";
+
+      const VB = 320;
+      const cx = VB / 2;
+      const cy = VB / 2;
+      const nucleusR = 12;
+
+      const padding = 18;
+      const maxR = (VB / 2) - padding;
+      const minR = nucleusR + 18;
+
+      const nucleus = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      nucleus.setAttribute("cx", cx);
+      nucleus.setAttribute("cy", cy);
+      nucleus.setAttribute("r", nucleusR);
+      nucleus.setAttribute("class", "nucleus");
+      svg.appendChild(nucleus);
+
+      const shellCount = shells.length;
+
+      function shellRadius(i){
+        if(shellCount <= 1) return (minR + maxR) / 2;
+        return minR + (i * (maxR - minR)) / (shellCount - 1);
+      }
+
+      shells.forEach((count, i) => {
+        const r = shellRadius(i);
+        const isOuter = i === shellCount - 1;
+
+        const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        ring.setAttribute("cx", cx);
+        ring.setAttribute("cy", cy);
+        ring.setAttribute("r", r);
+        ring.setAttribute("class", `shell ${isOuter ? "shell-outer" : "shell-inner"}`);
+        svg.appendChild(ring);
+
+        if(!count || count <= 0) return;
+
+        const dotR = count >= 24 ? 2.3 : (count >= 16 ? 2.8 : 3.5);
+
+        for(let j = 0; j < count; j++){
+          const angle = (j / count) * Math.PI * 2 + i * 0.35;
+          const x = cx + r * Math.cos(angle);
+          const y = cy + r * Math.sin(angle);
+
+          const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          dot.setAttribute("cx", x);
+          dot.setAttribute("cy", y);
+          dot.setAttribute("r", dotR);
+          dot.setAttribute("class", isOuter ? "electron electron-outer" : "electron");
+          svg.appendChild(dot);
+        }
+      });
+    }
+
+    function renderShellRow(shells){
+      const row = document.getElementById("shell-row");
+      row.innerHTML = "";
+      shells.forEach((n, idx) => {
+        const chip = document.createElement("div");
+        chip.className = "shell-chip";
+        const label = idx === shells.length - 1 ? `Outer shell: <strong>${n}</strong>` : `Shell ${idx+1}: ${n}`;
+        chip.innerHTML = label;
+        row.appendChild(chip);
+      });
+    }
+
+    // Toggle: show only outer shell (simplifies busy diagrams)
+    document.getElementById("toggle-valence").addEventListener("click", () => {
+      if(!lastShells) return;
+      showingValenceOnly = !showingValenceOnly;
+      if(showingValenceOnly){
+        const v = lastShells[lastShells.length - 1] || 0;
+        drawBohr([v]);
+        renderShellRow([v]);
+        document.getElementById("toggle-valence").textContent = "Show all shells";
+      }else{
+        drawBohr(lastShells);
+        renderShellRow(lastShells);
+        document.getElementById("toggle-valence").textContent = "Show only outer shell";
+      }
+    });
+
+    // ---------------------------
+    // Lewis dots diagram (valence electrons)
+    // ---------------------------
+    function drawLewis(symbol, valence){
+      const svg = document.getElementById("lewis");
+      svg.innerHTML = "";
+
+      const NS = "http://www.w3.org/2000/svg";
+      const cx = 120, cy = 120;
+
+      // label
+      const label = document.createElementNS(NS, "text");
+      label.setAttribute("x", cx);
+      label.setAttribute("y", 26);
+      label.setAttribute("text-anchor", "middle");
+      label.setAttribute("class", "lewis-label");
+      label.textContent = `Valence electrons: ${valence}`;
+      svg.appendChild(label);
+
+      // symbol
+      const text = document.createElementNS(NS, "text");
+      text.setAttribute("x", cx);
+      text.setAttribute("y", cy + 16);
+      text.setAttribute("text-anchor", "middle");
+      text.setAttribute("class", "lewis-symbol");
+      text.textContent = symbol;
+      svg.appendChild(text);
+
+      // Dots placed on 4 sides; fill singles first then pair (common classroom style)
+      const positions = [
+        {x: cx,     y: cy - 64}, // top
+        {x: cx + 64,y: cy},      // right
+        {x: cx,     y: cy + 64}, // bottom
+        {x: cx - 64,y: cy}       // left
+      ];
+
+      // Build dot slots: first pass single dot each side, second pass second dot each side
+      const slots = [];
+      for(let i=0;i<4;i++) slots.push({pos:i, dx: 0, dy: 0});
+      for(let i=0;i<4;i++){
+        // slight offset for paired dot
+        const p = positions[i];
+        const isHoriz = (i===1 || i===3);
+        slots.push({pos:i, dx: isHoriz ? 0 : 10, dy: isHoriz ? 10 : 0});
+      }
+
+      const count = Math.max(0, Math.min(8, valence)); // clamp 0..8
+      for(let i=0;i<count;i++){
+        const s = slots[i];
+        const p = positions[s.pos];
+        const dot = document.createElementNS(NS, "circle");
+        dot.setAttribute("cx", p.x + s.dx);
+        dot.setAttribute("cy", p.y + s.dy);
+        dot.setAttribute("r", 6);
+        dot.setAttribute("class", "lewis-dot");
+        svg.appendChild(dot);
+      }
+    }
+
+    // ---------------------------
+    // Modal close
+    // ---------------------------
+    function closeModal(){
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("detail-view").style.display = "none";
+      document.getElementById("overlay").setAttribute("aria-hidden", "true");
+    }
+
+    document.getElementById("close-btn").addEventListener("click", closeModal);
+    document.getElementById("overlay").addEventListener("click", closeModal);
+
+    document.addEventListener("keydown", (ev) => {
+      if(ev.key === "Escape"){
+        const open = document.getElementById("detail-view").style.display === "block";
+        if(open) closeModal();
+      }
+    });
+
+    
+    // ---------------------------
+    // Theme (dark mode)
+    // ---------------------------
+    function applyTheme(theme){
+      const root = document.documentElement;
+      if(theme === "dark"){
+        root.setAttribute("data-theme", "dark");
+      }else{
+        root.removeAttribute("data-theme");
+      }
+      const btn = document.getElementById("theme-toggle");
+      if(btn){
+        const isDark = theme === "dark";
+        btn.setAttribute("aria-pressed", isDark ? "true" : "false");
+        btn.textContent = isDark ? "☀️ Light mode" : "🌙 Dark mode";
+      }
+    }
+
+    function initTheme(){
+      const saved = localStorage.getItem("pt_theme");
+      if(saved === "dark" || saved === "light"){
+        applyTheme(saved);
+      }else{
+        // Default to LIGHT mode unless the user has previously chosen a theme.
+        applyTheme("light");
+      }
+
+      const btn = document.getElementById("theme-toggle");
+      if(btn){
+        btn.addEventListener("click", () => {
+          const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+          const next = isDark ? "light" : "dark";
+          localStorage.setItem("pt_theme", next);
+          applyTheme(next);
+        });
+      }
+    }
+
+// ---------------------------
+    // Init
+    // ---------------------------
+    initTheme();
+    createGroupHeader();
+    initFilters();
+    refreshTable();
+    checkCompletion();
+
+    // ---------------------------
+    // PWA: register service worker
+    // ---------------------------
+    if("serviceWorker" in navigator){
+      // Inline SW via blob so no separate sw.js file is needed
+      const swCode = `const CACHE = 'periodic-table-v1';
+self.addEventListener('install', e => { self.skipWaiting(); });
+self.addEventListener('activate', e => { self.clients.claim(); });
+self.addEventListener('fetch', e => {
+  e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
+});`;
+      const blob = new Blob([swCode], {type: 'application/javascript'});
+      const swUrl = URL.createObjectURL(blob);
+      navigator.serviceWorker.register(swUrl).catch(() => {});
+    }
+  </script>
+</body>
+</html>
